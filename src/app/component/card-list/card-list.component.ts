@@ -8,17 +8,16 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './card-list.component.html',
-  styleUrl: './card-list.component.scss'
+  styleUrl: './card-list.component.scss',
 })
 export class CardListComponent implements OnInit {
   unitsList: Location[] = [];
 
   constructor(private locationsService: LocationsService) {
-    locationsService.locations.subscribe(data => {
-      this.unitsList = data
-    })
+    locationsService.locations.subscribe((data) => {
+      this.unitsList = data;
+    });
   }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 }

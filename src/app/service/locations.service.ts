@@ -22,17 +22,22 @@ export class LocationsService {
   // Construtor realizando o request, armazenamento
   constructor(private httpClient: HttpClient) {
     this.httpClient.get<Locations>(this.apiUrl).subscribe((data) => {
-      this.allLocations = data.locations
+      // Adiciona os dados a variável que armazena todos os dados, mas antes verifica as schedules
+      // de todos as locations para verificar se há dois dados de horários para o mesmo dia, caso sim, são concatenados em um só.
+      this.allLocations = this.concatenateHoursInSameDay(data.locations)
 
       this.locationsSubject.next(this.allLocations)
     })
   }
 
+  // Função principal que realiza a atualização dos dados e o stream quando solicitado
   getLocations(hour: string, openSaturday: boolean, openMonday: boolean, showClosed: boolean): void {
     this.filteredLocations = this.isShowClosed(showClosed)
     this.filteredLocations = this.isOpenSaturday(openSaturday, hour)
     this.filteredLocations = this.isOpenMonday(openMonday, hour)
     this.filteredLocations = this.isOpen(hour)
+
+    console.log(this.filteredLocations)
 
     this.locationsSubject.next(this.filteredLocations)
   }
@@ -178,4 +183,34 @@ export class LocationsService {
     })
   }
 
+  private concatenateHoursInSameDay(locations: Location[]): Location[] {
+    return locations.map(location => {
+      let daysInWeek: {
+        key: number,
+        data: { weekdays: string, hour: string }
+      }[] = [];
+
+      const processedDays = new Set<string>()
+
+      let filteredSchedules = location.schedules
+
+      if (location.schedules) {
+        filteredSchedules = location.schedules.filter((schedule, key) => {
+          let repeated = daysInWeek.filter(day => day.data.weekdays === schedule.weekdays)
+
+          if (repeated.length >= 1 && !processedDays.has(schedule.weekdays)) {
+            location.schedules[repeated[0].key].hour += " - " + schedule.hour
+            processedDays.add(schedule.weekdays)
+            return false
+          }
+
+          daysInWeek.push({ key: key, data: schedule })
+
+          return true
+        });
+      }
+
+      return { ...location, schedules: filteredSchedules }
+    })
+  }
 }

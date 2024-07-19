@@ -7,8 +7,10 @@
         }"
         >{{ card.opened ? "Aberto" : "Fechado" }}</span
       >
-      <h3>{{ card.title }}</h3>
-      <p [innerHTML]="card.content"></p>
+      <div class="adress-container">
+        <h3 [innerHTML]="card.title"></h3>
+        <p [innerHTML]="card.content"></p>
+      </div>
       <div class="divider"></div>
       <ul class="card-warning">
         <img *ngIf="card.mask" [src]="'/' + card.mask + '-mask.png'" />
@@ -24,8 +26,13 @@
       </ul>
       <ul class="info-hours">
         <li *ngFor="let schedule of card.schedules">
-          <b>{{ schedule.weekdays }}</b>
-          {{ schedule.hour }}
+          <div *ngIf="!(schedule.weekdays == 'Obs.:')">
+            <b>{{ schedule.weekdays }}</b>
+            {{ schedule.hour }}
+          </div>
+          <div class="obs" *ngIf="schedule.weekdays == 'Obs.:'">
+            <span>{{ schedule.weekdays + " " + schedule.hour }}</span>
+          </div>
         </li>
       </ul>
     </div>

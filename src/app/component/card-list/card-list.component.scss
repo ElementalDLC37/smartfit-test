@@ -1,6 +1,8 @@
 .card-list {
   display: flex;
   flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
   gap: 1rem;
   justify-content: center;
 
@@ -12,12 +14,13 @@
       display: flex;
       flex-direction: column;
       padding: 1rem;
-      width: 17rem;
-      height: 23rem;
+      width: 16rem;
+      height: 22rem;
+      justify-content: space-between;
 
       span {
         font-weight: 800;
-        font-size: 14px;
+        font-size: 12px;
         color: var(--red);
         padding-bottom: 1rem;
       }
@@ -26,44 +29,68 @@
         color: var(--green);
       }
 
-      h3 {
-        font-weight: 800;
-        font-size: 24px;
-        padding-bottom: 1rem;
-      }
+      .adress-container {
+        height: 96px;
 
-      p {
-        font-size: 14px;
-        padding-bottom: 0.8rem;
+        h3 {
+          font-weight: 800;
+          font-size: 22px;
+          padding-bottom: 1rem;
+        }
+
+        p {
+          font-size: 12px;
+          padding-bottom: 0.8rem;
+        }
       }
 
       .divider {
         background-color: var(--light-grey);
         height: 1px;
-        margin-bottom: 0.8rem;
+        margin: 4px 0;
+        margin-bottom: 12px;
       }
 
       .card-warning {
         margin-bottom: 1.5rem;
+        display: flex;
+        justify-content: space-around;
 
         img {
-          width: 60px;
+          width: 40px;
         }
       }
       .info-hours {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 14px;
+        row-gap: 18px;
+        height: max-content;
+        align-items: end;
 
         li {
-          font-size: 16px;
+          font-size: 13px;
           display: flex;
-          gap: 0.7rem;
+          height: min-content;
           flex-direction: column;
+          justify-content: end;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+          }
+
+          .obs {
+            span {
+              color: var(--light-grey);
+              padding: 0;
+            }
+          }
 
           b {
             font-weight: 800;
-            font-size: 20px;
+            font-size: 18px;
           }
         }
       }

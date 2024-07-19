@@ -25,6 +25,7 @@ export class LocationsService {
       // Adiciona os dados a variável que armazena todos os dados, mas antes verifica as schedules
       // de todos as locations para verificar se há dois dados de horários para o mesmo dia, caso sim, são concatenados em um só.
       this.allLocations = this.concatenateHoursInSameDay(data.locations)
+      this.allLocations = this.fixObsInContent()
 
       this.locationsSubject.next(this.allLocations)
     })
@@ -211,6 +212,16 @@ export class LocationsService {
       }
 
       return { ...location, schedules: filteredSchedules }
+    })
+  }
+
+  private fixObsInContent() {
+    return this.allLocations.map(location => {
+      if (location.content) {
+        return { ...location, content: location.content.split("Obs.:")[0] }
+      }
+
+      return location
     })
   }
 }

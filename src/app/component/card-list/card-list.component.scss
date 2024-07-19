@@ -22,7 +22,7 @@
         font-weight: 800;
         font-size: 12px;
         color: var(--red);
-        padding-bottom: 1rem;
+        margin-bottom: 0.3rem;
       }
 
       .opened {
@@ -30,12 +30,12 @@
       }
 
       .adress-container {
-        height: 96px;
+        height: 100px;
 
         h3 {
           font-weight: 800;
           font-size: 22px;
-          padding-bottom: 1rem;
+          padding-bottom: 0.7rem;
         }
 
         p {
@@ -45,14 +45,14 @@
       }
 
       .divider {
-        background-color: var(--light-grey);
-        height: 1px;
+        background-color: var(--extra-light-grey);
+        height: 2px;
         margin: 4px 0;
-        margin-bottom: 12px;
+        margin-bottom: 8px;
       }
 
       .card-warning {
-        margin-bottom: 1.5rem;
+        margin-bottom: 0.7rem;
         display: flex;
         justify-content: space-around;
 
@@ -64,7 +64,7 @@
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
-        row-gap: 18px;
+        row-gap: 14px;
         height: max-content;
         align-items: end;
 
@@ -78,13 +78,16 @@
           div {
             display: flex;
             flex-direction: column;
-            gap: 0.4rem;
+            gap: 0.3rem;
           }
 
           .obs {
+            height: min-content;
+
             span {
               color: var(--light-grey);
               padding: 0;
+              margin: 0;
             }
           }
 

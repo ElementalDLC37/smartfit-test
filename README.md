@@ -10,6 +10,7 @@
 ### E atenda essas regras de negócio:
 - Filtrar unidades abertas ou fechadas
 - Filtrar unidades por período de funcionamento
+- FIltrar caso abra aos sábados e/ou domingos
 - Caso não encontre unidades, mostrar uma menssagem ao usuário "Nenhuma unidade encontrada"
 - Validar para mostrar ícones corretos de acordo com o status
 

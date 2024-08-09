@@ -16,10 +16,10 @@
 O projeto foi realizado em Angular, com auxílio do Angular CLI versão 18.0.7.
 
 ### Servidor de desenvolvimento
-Execute ng serve para iniciar um servidor de desenvolvimento. Navegue até http://localhost:4200/. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
+Execute ng serve para iniciar um servidor de desenvolvimento. Navegue até `http://localhost:4200/`. A aplicação será recarregada automaticamente se você alterar qualquer um dos arquivos de origem.
 
 ### Criação de código
-Execute ng generate component nome-do-componente para gerar um novo componente. Você também pode usar ng generate directive|pipe|service|class|guard|interface|enum|module.
+Execute ng generate component nome-do-componente para gerar um novo componente. Você também pode usar `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ### Compilação
-Execute ng build para compilar o projeto. Os artefatos de compilação serão armazenados no diretório dist/.
+Execute ng build para compilar o projeto. Os artefatos de compilação serão armazenados no diretório `dist/`.
